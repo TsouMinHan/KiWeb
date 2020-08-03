@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block inside_right %}
+
+<!-- for bookmark -->
+  <div onclick="switchDisplay('bookmark');">
+    <h2 id="bookmark-txt">▼書籤</h2>
+  </div>
+  
+  <div id="bookmark" style="display: block;">
+    <div class="form-group pull-right">
+      <input type="text" id="_url" name="_url">
+      <input type="button" id="Submit" value="Submit">
+    </div>
+    <div>
+      <p id="flash"></p>
+    </div>
+    <br>
+    <hr>
+    <hr>
+    <ul id="items-list" class="moveable">
+      {% if data %}
+          {% for key in data %}
+          <li>
+            <a class="" href="{{ data[key]['url'] }}" target="_blank">
+              <img src="{{ data[key]['favicon'] }}" height="16px" width="16px">{{key}}
+            </a>
+            <button type="button" class="pull-right btn-link" id="{{key}}" onclick="delete_bookmark(this.id)">X</button>
+          </li>
+          <br>
+          {% endfor %}      
+        {% endif %}
+    </ul>
+  </div>
+  
+
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block inside_right %}
+    <h1>{{ ('Not Found The Page.') }}</h1>
+    <p><a href="{{ url_for('main.index') }}">{{ ('Back') }}</a></p>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}KimoAssistant - Gallery{% endblock %}
+
+{% block content %}
+    {{ super() }}
+{% endblock %}
+
+{% block style %}
+    {{ super() }}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type= text/javascript src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+{% endblock %}
+
+{% block inside_right %}
+    <div class="baha">
+        <div id="unfold" onclick="switchDisplay('baha-url-input');">
+        <h1 id="txt1">▼輸入巴哈圖串網址</h1>
+        </div>
+            <br>
+        <div class="form-group" id="baha-url-input" style="display: none;">
+            <input type="text" id="_url" name="">
+            <input type="button" id="Submit" value="Submit">
+        </div>
+
+        <p id="flash"></p>
+
+    </div>
+
+    <!-- show image -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="btn-group btn-group-lg pull-right">
+                    <button type="button" class="btn" id="Done" style="background-color:#080808;color:#ccc;">Done</button>
+                    <button type="button" class="btn" id="DoneBack" style="background-color:#080808;color:#ccc;">Done & Back</button>
+                  </div>
+            </div>
+            <!-- <button onclick="downFunction()" id="downBtn" title="Go to End">End</button> -->
+        </div>
+
+        
+        {% if data != None %}
+        <div class="row col-md-10">
+            <h3 style="text-align: center" id="show_number"><b>Total: {{ data['total_num'] }}, Now: {{ data['num'] }}</b></h4>
+            <h4 style="text-align: center" id="show_date"><b>{{ data['date'] }}</b></h4>
+        </div>
+        <div class="row", id="canvas">
+            {% for picture in data['pictures'] %}
+                <div class="col-md-5">
+                    <a href="{{ picture }}"><img src="{{ picture }}" width=100%></a>
+                    <br> 
+                </div>
+            {% endfor %}
+            
+        {% endif %}
+        </div>
+    </div>
+        
+{% endblock %}
