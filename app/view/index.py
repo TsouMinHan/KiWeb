@@ -1,8 +1,6 @@
 from flask import render_template, request, jsonify, flash
 from flask_login import login_required
 
-import twder # 匯率套件
-
 from app.models import BookMark
 from . import main
 
@@ -22,7 +20,6 @@ def delete_bookmark_ajax():
     data = request.get_json()
     key_id = data["key_id"]
     bm.delete(key_id)
-    print(key_id)
 
     return jsonify(bm.get_record())
 
@@ -31,7 +28,6 @@ def index_ajax():
     data = request.get_json() 
     results = dict()
     url = data['url'] ## input url
-    print(url, '-'*10)
     res = bookmark_crawler.get_requests(url)
 
     if res:
@@ -46,21 +42,5 @@ def index_ajax():
         data = bm.insert(results)
     else:
         results['flash'] = f'{url} not correct!!'
-
-    return jsonify(results)
-
-@main.route('/exchange_money_ajax', methods=['GET', 'POST'])
-def exchange_money_ajax():
-    data = request.get_json() 
-    results = dict()
-
-    currency = data['currency']
-    money = int(data['money'])
-
-    rate = eval(twder.now(currency)[3])
-
-    results['result'] = money*rate
-    results['rate'] = rate
-    print(results['result'], results['rate'])
 
     return jsonify(results)

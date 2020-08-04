@@ -53,10 +53,10 @@
             <a href="{{url_for('main.news_index')}}">News</a>
           </li>
           <li>
-            <a href="{{url_for('main.index')}}">Gallery</a>
+            <a href="{{url_for('main.gallery_index')}}">Gallery</a>
           </li>
           <li>
-            <a href="{{url_for('main.index')}}">BookSearch</a>
+            <a href="{{url_for('main.bookSearch_index')}}">BookSearch</a>
           </li>
           {% if current_user.is_anonymous %}
           <li>
@@ -85,26 +85,7 @@
               <h4>鄒旻翰</h4>
               <span class="text-muted">做來玩的</span>
             </div>   
-            {% block inside_left %}       
-            <div>
-              <input type="number" class="money" min="0">
-              <select name="exchange_rate_form">
-                <option value="JPY">JPY</option>
-                <option value="HKD">HKD</option>
-                <option value="USD">USD</option>
-              </select>
-              <input type="submit" class="exchange_submit" value="轉換">
-              <div id="exchange_result"></div>
-              <div id="exchange_rate"></div>
-            </div>
-            {% if bahaCafeteria_data %}
-            <h3>巴哈勇者福利社</h3>
-              {% for cafe_key in bahaCafeteria_data %}
-                <a href="{{ bahaCafeteria_data[cafe_key] }}" target="_blank">{{cafe_key}}</a>
-                <br>
-                <br>
-              {% endfor %}
-            {% endif %}
+            {% block inside_left %}
           {% endblock %}         
           </div>
         </div>

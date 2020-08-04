@@ -1,14 +1,12 @@
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from flask import redirect, url_for, render_template, request
 from flask_login import current_user, login_user, logout_user
+from wtforms.validators import DataRequired
 from werkzeug.urls import url_parse
+from flask_wtf import FlaskForm
 
 from app.models import User
 from . import main
-
-
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])

@@ -44,14 +44,10 @@
 
         
         {% if data != None %}
-        <div class="row col-md-10">
-            <h3 style="text-align: center" id="show_number"><b>Total: {{ data['total_num'] }}, Now: {{ data['num'] }}</b></h4>
-            <h4 style="text-align: center" id="show_date"><b>{{ data['date'] }}</b></h4>
-        </div>
         <div class="row", id="canvas">
-            {% for picture in data['pictures'] %}
+            {% for img in data['img_ls'] %}
                 <div class="col-md-5">
-                    <a href="{{ picture }}"><img src="{{ picture }}" width=100%></a>
+                    <a href="{{ img }}"><img src="{{ img }}" width=100%></a>
                     <br> 
                 </div>
             {% endfor %}

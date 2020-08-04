@@ -33,11 +33,10 @@ $(function(){
             data: JSON.stringify(post_data),
             success: function(data){
                 document.getElementById('canvas').innerHTML="";
-                document.getElementById('show_number').innerHTML=`<b>${data['total_num']}, Now: ${ data['num'] }</b>`;
-                document.getElementById('show_date').innerHTML=`<b>${data['date']}</b>`;
-                data['pictures'].forEach(function(picture){
+
+                data['img_ls'].forEach(function(img){
                     document.getElementById('canvas').innerHTML += `<div class="col-md-5">
-                    <a href="${picture}"><img src="${picture}" width=100%></a>
+                    <a href="${img}"><img src="${img}" width=100%></a>
                     <br> 
                 </div></a></h4>`
                 })
@@ -70,10 +69,10 @@ function switchDisplay(item) {
     var TargetArea = document.getElementById(item);
     TargetArea.style.display = (TargetArea.style.display == 'block'?'none':'block');   
     if(TargetArea.style.display=="block"){
-      document.getElementById("txt1").innerHTML = "▲輸入"; 
+        document.getElementById("txt1").innerHTML = "▲輸入"; 
     }
     else{
-      document.getElementById("txt1").innerHTML = "▼輸入";
+        document.getElementById("txt1").innerHTML = "▼輸入";
     }
   }
 
@@ -89,8 +88,8 @@ $(function () {
             contentType: "application/json",
             data: JSON.stringify(postData),
             success: function (data) {
-                if (data["flash"]){
-                    document.getElementById('flash').innerHTML = data["flash"];
+                if (data["status"] =="Failed"){
+                    document.getElementById('flash').innerHTML = "duplicate!!";
                 }
                 else{
                     document.getElementById('flash').innerHTML ="insert success!!";

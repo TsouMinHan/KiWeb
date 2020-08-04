@@ -1,9 +1,9 @@
+from flask import render_template, request, jsonify
 from datetime import datetime, timedelta
-from flask import render_template, session, request, jsonify
 from flask_login import login_required
 
-from . import main
 from app.models import NewsDB
+from . import main
 
 db= NewsDB()
 
