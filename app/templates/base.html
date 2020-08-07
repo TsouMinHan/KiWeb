@@ -58,6 +58,9 @@
           <li>
             <a href="{{url_for('main.bookSearch_index')}}">BookSearch</a>
           </li>
+          <li>
+            <a href="{{url_for('main.database_index', table_name='')}}">Database</a>
+          </li>
           {% if current_user.is_anonymous %}
           <li>
             <a href="{{ url_for('main.login') }}">Login</a>

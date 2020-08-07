@@ -151,6 +151,114 @@ class BahaImgListDB:
 
         return ls
 
+class MainDB:  
+    def __init__(self):
+        self.db = DBHandler()
+        self.table_name = "job"
+
+    def create_table(self):
+        with self.db:
+            sql = f"""
+                CREATE TABLE IF NOT EXISTS {self.table_name} (
+                id integer PRIMARY KEY,
+                name string(8) NOT NULL,
+                start_time string(64) NOT NULL,
+                weekday string(8) NOT NULL,
+                channel integer NOT NULL
+                );
+                """
+            
+            self.db.cur.execute(sql)
+
+    def get_record(self, table_name, start):
+        with self.db:
+            sql = f"""
+                SELECT * FROM {table_name} LIMIT {start}, 100
+            """
+
+            self.db.cur.execute(sql)
+
+            rows = self.db.cur.fetchall()
+        return rows
+
+    def get_table_ls(self):
+        with self.db:
+            sql = "SELECT name FROM sqlite_master WHERE type='table';"
+            self.db.cur.execute(sql)
+            
+            rows = self.db.cur.fetchall()
+        
+        return [ row[0] for row in rows]
+
+    def get_column_ls(self, table_name):
+        """
+        : Return rows: list of tuple. [ (id, column_name, type, not null, default value, primary key), ...]
+        """
+        with self.db:
+            sql = f"PRAGMA table_info({table_name})"
+
+            self.db.cur.execute(sql)
+            rows = self.db.cur.fetchall()
+        
+        return rows
+
+    def get_rows_len(self, table_name):
+        with self.db:
+            sql = f"""
+                SELECT Count(*) FROM {table_name}
+            """
+
+            self.db.cur.execute(sql)
+
+            rows = self.db.cur.fetchall()
+        return rows[0][0]
+
+    def insert(self, table_name, column_str, data_str):
+        with self.db:
+            sql = f"""
+                INSERT INTO {table_name}
+                ({column_str})
+                VALUES ({data_str})
+            """
+
+            self.db.cur.execute(sql)
+            self.db.conn.commit()
+    
+    def update(self, table_name, column_str, id):
+        with self.db:
+            sql = f"""
+                UPDATE {table_name}
+                SET {column_str}
+                WHERE id={id}
+            """
+
+            print(sql)
+            self.db.cur.execute(sql)
+            self.db.conn.commit()
+
+    def delete(self, table_name, id):
+        with self.db:
+            sql = f"""
+                DELETE FROM {table_name}
+                WHERE id={id}
+            """
+
+            self.db.cur.execute(sql)
+            self.db.conn.commit()
+
+    def search(self, table_name, id):
+        with self.db:
+            sql = f"""
+                SELECT * FROM {table_name}
+                WHERE id='{id}'
+            """
+
+            self.db.cur.execute(sql)
+
+            rows = self.db.cur.fetchall()
+
+        return rows[0]
+
 if __name__ == "__main__":
     m = Main_DB()
     m.create_table()

@@ -1,7 +1,7 @@
-from app.models import NewsDB, GalleryDB
+from app.models import NewsDB, GalleryDB, MainDB
 from datetime import date
 
 if __name__ == '__main__':
-    a = GalleryDB()   
-    z = a.delete_img()
-    print(z)
+    a = MainDB()   
+    z = a.get_record("News")
+    print(len(z))
