@@ -1,4 +1,5 @@
 from flask import render_template, session, request, jsonify
+from flask_login import login_required
 from datetime import datetime
 import urllib.parse
 import requests
@@ -66,6 +67,7 @@ def ajax_index():
     return jsonify(results)
     
 @main.route('/bookSearch', methods=["GET"])
+@login_required
 def bookSearch_index():
     results = session.get("bookSearch_results")
 

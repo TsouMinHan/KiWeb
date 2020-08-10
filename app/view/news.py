@@ -15,7 +15,7 @@ def goClick():
     return jsonify({"status": "OK"})
 
 @main.route('/news', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def news_index():
     date = "'"
     if request.args.get('date'):

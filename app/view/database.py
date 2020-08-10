@@ -17,7 +17,7 @@ def check_data(row):
 
 @main.route('/database/', methods=['GET', 'POST'])
 @main.route('/database/<table_name>', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def database_index(table_name=""):    
     table_ls = db.get_table_ls()
 
