@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}KimoAssistant - Log{% endblock %}
+
+{% block content %}
+    {{ super() }}
+{% endblock %}
+
+{% block style %}
+    {{ super() }}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}
+
+{% block inside_right %}
+    <textarea style="width: 100%; height: 90%;">
+        {% for log in data %}
+                {{ log.datetime }} : {{ log.title }}
+                {{ log.msg }}
+                -------------
+        {% endfor %}
+        
+    </textarea>
+{% endblock %}

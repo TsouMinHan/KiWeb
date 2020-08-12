@@ -259,6 +259,32 @@ class MainDB:
 
         return rows[0]
 
+class LogContent:
+    def __init__(self, title, msg, datetime):
+        self.title = title
+        self.msg = msg
+        self.datetime = datetime
+
+class LogDB:
+    def __init__(self):
+        self.table_name = "log"
+        self.db = DBHandler()
+    
+    def get_log(self):
+        with self.db:
+            sql = f"""
+                SELECT title, msg, datetime
+                FROM {self.table_name}
+                ORDER BY datetime DESC
+                LIMIT 40
+            """
+
+            self.db.cur.execute(sql)
+            
+            rows = self.db.cur.fetchall()
+
+        return [ LogContent(row[0], row[1], row[2]) for row in rows ]
+
 if __name__ == "__main__":
     m = Main_DB()
     m.create_table()

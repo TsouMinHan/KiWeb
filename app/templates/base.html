@@ -61,6 +61,9 @@
           <li>
             <a href="{{url_for('main.database_index', table_name='')}}">Database</a>
           </li>
+          <li>
+            <a href="{{url_for('main.log_index')}}">Log</a>
+          </li>
           {% if current_user.is_anonymous %}
           <li>
             <a href="{{ url_for('main.login') }}">Login</a>
