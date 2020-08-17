@@ -1,10 +1,9 @@
 from flask import render_template, request, jsonify, flash
 from flask_login import login_required
 
+from app import bookmark_crawler
 from app.models import BookMark
 from . import main
-
-
 
 bm = BookMark()
 
@@ -30,17 +29,19 @@ def index_ajax():
     url = data['url'] ## input url
     res = bookmark_crawler.get_requests(url)
 
-    if res:
+    try:
         soup = bookmark_crawler.get_soup(res)
         
         title = bookmark_crawler.get_title(soup)
         favicon = bookmark_crawler.get_favicon(res)
+
         results[title] = {
             "url": url,
             "favicon": favicon
         }
         data = bm.insert(results)
-    else:
-        results['flash'] = f'{url} not correct!!'
+
+    except Exception as e:
+        results['flash'] = f'{url} {e}'
 
     return jsonify(results)
