@@ -17,8 +17,8 @@
 
 {% block inside_left %}
   <ul class="nav nav-sidebar">
-    {% for first_key in record_dc.keys() %}
-      <li><a href="#{{ first_key }}">{{ first_key }}</a></li>
+    {% for key in record_dc.keys() %}
+      <li><a href="#{{ key }}">{{ key }} - {{ record_dc[key]|length }}</a></li>
     {%endfor %}
   </ul>
 {% endblock %}
@@ -37,9 +37,9 @@
 
     {% for key in record_dc.keys() %}
     
-      {% if record_dc[key] %}
+      {% if record_dc[key]%}
         <br id='{{ key }}'><br><br>  
-        <h1>{{ key }}</h1> 
+        <h1>{{ key }} - {{ record_dc[key]|length }}</h1> 
         <hr><hr>
 
         {% for i, content in enumerate(record_dc[key]) %}

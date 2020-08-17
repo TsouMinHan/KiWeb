@@ -3,6 +3,8 @@ bug fix.
  - bookmark page lose bookmark_crawler.py.
  - title "Nonetype" issue.
 
+show number of articles in news page.
+
 2020.08.12
 add log page.
 
