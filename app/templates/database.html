@@ -17,7 +17,7 @@
   <button class="tablinks" onclick="openCity(event, 'data')" id="defaultOpen">資料</button>
   <p id="max_page">{{data["data_length"] // 100 +1}}</p>
   <p>/</p>
-  <input id="page" type="number" value="{{ data['page'] }}">
+  <input id="up_page" type="number" value="{{ data['page'] }}">
 </div>
 {% endif %}
 
@@ -83,18 +83,18 @@
     </tr>
 
     {% for n, column_data in enumerate(column_data_ls) %}
-    <tr>
-      <th>
+    <tr style="width: 50%;">
+      <td>
         <a class="btn btn-primary"
           href="{{url_for('main.modify_index', table_name=data['table_name'], id=column_data[0])}}">
           {{ n }}
         </a>
-      </th>
+      </td>
 
       {% for i in range(column_data|length) %}
-      <th class="{{ column_data[0] }}">
-        <input value="{{column_data[i]}}" readonly>
-      </th>
+        <td class="{{ column_data[0] }}">
+          <input value="{{column_data[i]}}" readonly>
+        </td>
       {% endfor %}
     </tr>
     {% endfor %}
@@ -102,26 +102,35 @@
   </table>
 </div>
 
+{% if data["table_name"]  %}
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'structure')">結構</button>
+    <button class="tablinks" onclick="openCity(event, 'data')" id="defaultOpen">資料</button>
+    <p id="max_page">{{data["data_length"] // 100 +1}}</p>
+    <p>/</p>
+    <input id="down_page" type="number" value="{{ data['page'] }}">
+  </div>
+{% endif %}
+
 {% endblock %}
 
 {% block inside_left %}
 {% set table_ls = data["table_ls"] %}
-<div class="container">
-  <table>
-    <tr>
-      <th>資料表名稱</th>
-    </tr>
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th>資料表名稱</th>
+      </tr>
 
-    {% for table in table_ls %}
-    <tr>
-      <th>
-        <a href="{{ url_for('main.database_index', table_name=table) }}">{{ table }}</a>
-      </th>
-    </tr>
-    {% endfor %}
-  </table>
-</div>
-
+      {% for table in table_ls %}
+      <tr>
+        <th>
+          <a href="{{ url_for('main.database_index', table_name=table) }}">{{ table }}</a>
+        </th>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
 {% endblock %}
 
 {% block scripts %}

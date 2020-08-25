@@ -21,21 +21,25 @@ function openCity(evt, tab) {
     evt.currentTarget.className += " active";
   }
 
-$('#page').keypress(function(event) {  
+function change_page(event, id){
   if (event.keyCode == 13) {
     
-    if (document.getElementById("page").value > parseInt(document.getElementById("max_page").innerHTML)){
+    if (document.getElementById(id).value > parseInt(document.getElementById("max_page").innerHTML)){
       alert("超出頁數了");
     }
     else{ 
       const index = window.location.href.search("page") - 1;
 
-      window.location.href = window.location.href.substr(0, index) + "?page=" + document.getElementById("page").value;
+      window.location.href = window.location.href.substr(0, index) + "?page=" + document.getElementById(id).value;
     }
     
   }
+};
+
+$('#up_page').keypress(function(event) {  
+  change_page(event, "up_page");
 });
 
-$(".update").click(function(id){
-
+$('#down_page').keypress(function(event) {  
+  change_page(event, "down_page");
 });

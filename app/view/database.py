@@ -21,7 +21,7 @@ def check_data(row):
 def database_index(table_name=""):    
     table_ls = db.get_table_ls()
 
-    page = request.args.get("page", default = 0, type = int)
+    page = request.args.get("page", default = 1, type = int)
 
     if request.method == 'POST':
         column_str = ", ".join([ row[1] for row in session["table"]["column_info_ls"]][1:]) # get column's name and remove id column.
@@ -37,7 +37,7 @@ def database_index(table_name=""):
                 "column_info_ls": db.get_column_ls(table_name),
             }
 
-        column_data_ls = db.get_record(session["table"]["table_name"], page*100)
+        column_data_ls = db.get_record(session["table"]["table_name"], (page-1)*100)
 
     except:
         session["table"] = {
@@ -77,6 +77,7 @@ def modify_index(table_name, id):
             db.delete(session["table"]["table_name"], id)
 
         return redirect(url_for("main.database_index", table_name=session["table"]["table_name"]))
+
     data = {
         "column_info_ls": session["table"]["column_info_ls"],
         "table_name": session["table"]["table_name"],
