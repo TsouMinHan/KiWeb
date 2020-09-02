@@ -21,7 +21,8 @@ def news_index():
     if request.args.get('date'):
         date = request.args.get('date')
     else:
-        date = datetime.now().date() - timedelta(days=1)
+        # date = datetime.now().date() - timedelta(days=1)
+        date = "" # get the show cloumn is 0.
 
     record_dc = db.get_record(date)
 

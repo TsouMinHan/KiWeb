@@ -1,3 +1,9 @@
+2020.09.02
+"2.3.1"
+modify functions:
+ - modify get_record() to get record by show column in NewsDB.
+ - if no date argument in url, get unshowing news in NewsView.
+
 2020.08.25
 fix bugs.
  - database page error.

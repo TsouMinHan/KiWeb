@@ -52,7 +52,7 @@ class NewsDB:
         self.db = DBHandler()
         self.table_name = "News"
 
-    def get_record(self, date):
+    def get_record(self, date=""): 
         with self.db:
             sql = f"SELECT DISTINCT website FROM {self.table_name}"
             self.db.cur.execute(sql)
@@ -62,10 +62,16 @@ class NewsDB:
             dc = {}
 
             for website in website_ls:
-                sql = f"""
-                    SELECT id, title, link FROM {self.table_name}
-                    WHERE date='{date}' and website='{website}';
-                """
+                if date:
+                    sql = f"""
+                        SELECT id, title, link FROM {self.table_name}
+                        WHERE date='{date}' and website='{website}';
+                    """
+                else:
+                    sql = f"""
+                        SELECT id, title, link FROM {self.table_name}
+                        WHERE show=0 and website='{website}';
+                    """
 
                 self.db.cur.execute(sql)            
                 rows = self.db.cur.fetchall()
