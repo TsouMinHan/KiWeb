@@ -8,6 +8,10 @@ modify functions:
 modify functions:
  - modify get_record() in NewsDB set show column equal 1 after select command.
 
+"2.3.3"
+delete column:
+ - value 2 in seen column in stead of show column in NewsDB.
+
 2020.08.25
 fix bugs.
  - database page error.

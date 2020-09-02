@@ -70,7 +70,7 @@ class NewsDB:
                 else:
                     sql = f"""
                         SELECT id, title, link FROM {self.table_name}
-                        WHERE show=0 and website='{website}';
+                        WHERE seen=0 and website='{website}';
                     """
 
                 self.db.cur.execute(sql)            
@@ -81,7 +81,7 @@ class NewsDB:
                 for row in rows:
                     sql = f"""
                         UPDATE {self.table_name}
-                        SET show=1 
+                        SET seen=2 
                         WHERE id is {row[0]};
                     """
                     self.db.cur.execute(sql)     
