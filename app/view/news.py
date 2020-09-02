@@ -17,12 +17,12 @@ def goClick():
 @main.route('/news', methods=['GET', 'POST'])
 @login_required
 def news_index():
-    date = "'"
+    date = "" # get the show cloumn is 0.
     if request.args.get('date'):
         date = request.args.get('date')
-    else:
+    # else:
         # date = datetime.now().date() - timedelta(days=1)
-        date = "" # get the show cloumn is 0.
+        
 
     record_dc = db.get_record(date)
 

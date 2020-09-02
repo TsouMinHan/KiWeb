@@ -77,6 +77,16 @@ class NewsDB:
                 rows = self.db.cur.fetchall()
 
                 dc[website] = [NewsContent(row[0], row[1], row[2]) for row in rows]
+
+                for row in rows:
+                    sql = f"""
+                        UPDATE {self.table_name}
+                        SET show=1 
+                        WHERE id is {row[0]};
+                    """
+                    self.db.cur.execute(sql)     
+            self.db.conn.commit()
+
         return dc
 
     def update_seen(self, id):
