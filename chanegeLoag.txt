@@ -1,3 +1,8 @@
+2020.09.08
+"2.3.4"
+modify tamplate:
+ - Gallery add Done button at end of page.
+
 2020.09.02
 "2.3.1"
 modify functions:
