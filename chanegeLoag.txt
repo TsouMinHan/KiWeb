@@ -3,6 +3,10 @@
 modify tamplate:
  - Gallery add Done button at end of page.
 
+"2.3.5"
+fix bug:
+ - Gallery Done button not work, beacuse id tag is duplicate.
+
 2020.09.02
 "2.3.1"
 modify functions:

@@ -15,14 +15,14 @@
 //             document.body.height = distance; 
 //             await sleep(1000);
 //         }
-        
+
 //     }
 // }
 // -----------------^^^Not Use^^^----------------------
 
 
-$(function(){
-    $('#Done').click(function(){
+$(function () {
+    $('.Done').click(function () {
         var post_data = {
             "mode": 'done'
         }
@@ -31,10 +31,10 @@ $(function(){
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(post_data),
-            success: function(data){
-                document.getElementById('canvas').innerHTML="";
+            success: function (data) {
+                document.getElementById('canvas').innerHTML = "";
 
-                data['img_ls'].forEach(function(img){
+                data['img_ls'].forEach(function (img) {
                     document.getElementById('canvas').innerHTML += `<div class="col-md-5">
                     <a href="${img}"><img src="${img}" width=100%></a>
                     <br> 
@@ -46,8 +46,8 @@ $(function(){
 });
 
 
-$(function(){
-    $('#DoneBack').click(function(){
+$(function () {
+    $('.DoneBack').click(function () {
         var post_data = {
             "mode": "back"
         }
@@ -56,9 +56,9 @@ $(function(){
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(post_data),
-            success: function(datas){
+            success: function (datas) {
             },
-            complete: function(){
+            complete: function () {
                 location.href = '/';
             }
         });
@@ -67,14 +67,14 @@ $(function(){
 
 function switchDisplay(item) {
     var TargetArea = document.getElementById(item);
-    TargetArea.style.display = (TargetArea.style.display == 'block'?'none':'block');   
-    if(TargetArea.style.display=="block"){
-        document.getElementById("txt1").innerHTML = "▲輸入"; 
+    TargetArea.style.display = (TargetArea.style.display == 'block' ? 'none' : 'block');
+    if (TargetArea.style.display == "block") {
+        document.getElementById("txt1").innerHTML = "▲輸入";
     }
-    else{
+    else {
         document.getElementById("txt1").innerHTML = "▼輸入";
     }
-  }
+}
 
 $(function () {
     $('#Submit').click(function () {
@@ -88,16 +88,16 @@ $(function () {
             contentType: "application/json",
             data: JSON.stringify(postData),
             success: function (data) {
-                if (data["status"] =="Failed"){
+                if (data["status"] == "Failed") {
                     document.getElementById('flash').innerHTML = "duplicate!!";
                 }
-                else{
-                    document.getElementById('flash').innerHTML ="insert success!!";
-                }  
-            },
-            complete: function(){
-                    document.getElementById('_url').value = ''
+                else {
+                    document.getElementById('flash').innerHTML = "insert success!!";
                 }
-            });
+            },
+            complete: function () {
+                document.getElementById('_url').value = ''
+            }
+        });
     });
 });
