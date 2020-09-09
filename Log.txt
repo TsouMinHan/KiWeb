@@ -1,42 +1,48 @@
+2020.09.09
+"2.3.6"
+improved:
+ - Change the wording of the log file.
+
 2020.09.08
 "2.3.4"
-modify tamplate:
+improved:
  - Gallery add Done button at end of page.
 
 "2.3.5"
-fix bug:
+fixed:
  - Gallery Done button not work, beacuse id tag is duplicate.
 
 2020.09.02
 "2.3.1"
-modify functions:
+improved:
  - modify get_record() to get record by show column in NewsDB.
  - if no date argument in url, get unshowing news in NewsView.
 
 "2.3.2"
-modify functions:
+improved:
  - modify get_record() in NewsDB set show column equal 1 after select command.
 
 "2.3.3"
-delete column:
+removed:
  - value 2 in seen column in stead of show column in NewsDB.
 
 2020.08.25
-fix bugs.
+fixed:
  - database page error.
 
-modify tamplate.
- - database page header.
- - table style.
- - base html got to top button.
+improved:
+ - add database page header.
+ - add table style.
+ - add base html got to top button.
 
 
 2020.08.17
-bug fix.
+fixed.
  - bookmark page lose bookmark_crawler.py.
  - title "Nonetype" issue.
 
-show number of articles in news page.
+new:
+ - show number of articles in news page.
 
 2020.08.12
 add log page.
