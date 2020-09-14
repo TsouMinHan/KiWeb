@@ -1,3 +1,8 @@
+2020.09.14
+"2.3.7"
+improved:
+ - Gallery show loading animation when Done and DoneBack button are clicked.
+
 2020.09.09
 "2.3.6"
 improved:
