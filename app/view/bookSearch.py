@@ -10,17 +10,16 @@ from . import main
 
 url_formula_dc = {
     "google": 'https://www.google.com/search?q={}',
-    "PTT": 'https://www.google.com/search?q={} PTT',
+    "PTT 心得": 'https://www.google.com/search?q={} PTT',
+    "PTT sale": 'https://www.google.com/search?q={} 售書',
     "googl_play": 'https://play.google.com/store/search?q={}&c=books',
     "tazze": 'https://www.taaze.tw/rwd_searchResult.html?keyType%5B%5D=0&keyword%5B%5D={}',
     "tenlong": 'https://www.tenlong.com.tw/search?utf8=%E2%9C%93&keyword={}',
-    "nfu": 'http://toread.lib.nfu.edu.tw/toread/opac/search?q={}',
     "Taichung Library": 'https://ipac.library.taichung.gov.tw/webpac/search.cfm?m=ss&k0={}&t0=k&c0=and',
     "Momo": 'https://www.momoshop.com.tw/search/searchShop.jsp?keyword={}',
 }
 
 hyread_dc = {
-        "虎科": "https://nfu.ebook.hyread.com.tw/searchList.jsp?search_field=FullText&search_input={}",
         "台中": "https://taichunggov.ebook.hyread.com.tw/searchList.jsp?search_field=FullText&search_input={}",
         "台北": "https://tpml.ebook.hyread.com.tw/searchList.jsp?search_field=FullText&search_input={}"
     }
