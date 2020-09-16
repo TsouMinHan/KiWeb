@@ -3,6 +3,10 @@
 improved:
  - bookSearch removed website about nfu and add search result about PTT sale book.
 
+"2.3.9"
+new:
+ - add new page "trend".
+
 2020.09.14
 "2.3.7"
 improved:

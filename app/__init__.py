@@ -9,7 +9,7 @@ import os
 
 from config import Config
 
-_version = "2.3.8"
+_version = "2.3.9"
 
 app = Flask(__name__)
 app.config.from_object(Config)

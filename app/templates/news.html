@@ -1,36 +1,17 @@
-{% extends "base.html" %}
-
-{% block title %}KimoAssistant - NEWS{% endblock %}
-
-{% block content%}
-  {{ super() }}   
-{% endblock %}
-
-{% block body%}
-  {{ super() }}   
-{% endblock %}
-
-{% block scripts %}
-  {{ super() }}
-  
-{% endblock %}
-
-{% block inside_left %}
-  <ul class="nav nav-sidebar">
+{% extends "base.html" %} {% block title %}KimoAssistant - NEWS{% endblock %} {% block content%} {{ super() }} {% endblock %} {% block body%} {{ super() }} {% endblock %} {% block scripts %} {{ super() }} {% endblock %} {% block inside_left %}
+<ul class="nav nav-sidebar">
     {% for key in record_dc.keys() %}
-      <li><a href="#{{ key }}">{{ key }} - {{ record_dc[key]|length }}</a></li>
+    <li><a href="#{{ key }}">{{ key }} - {{ record_dc[key]|length }}</a></li>
     {%endfor %}
-  </ul>
-{% endblock %}
+</ul>
+{% endblock %} {% block inside_right %}
 
-{% block inside_right %}
-
-<form method="GET"" class="div_right">
-    <input type="date" name="date" value="{{ date }}">
-    <input type="submit">
+<form method="GET" " class="div_right ">
+    <input type="date " name="date " value="{{ date }} ">
+    <input type="submit ">
   </form>
-  <h3><a href="http://globalnewstv.com.tw/category/%e5%85%a8%e7%90%83%e6%96%b0%e8%84%88%e5%8b%95/" target="_blank">寰宇</a></h3>
-  <h3><a href="https://www.daai.tv/news/international" target="_blank">大愛</a></h3>
+  <h3><a href="http://globalnewstv.com.tw/category/%e5%85%a8%e7%90%83%e6%96%b0%e8%84%88%e5%8b%95/ " target="_blank ">寰宇</a></h3>
+  <h3><a href="https://www.daai.tv/news/international " target="_blank ">大愛</a></h3>
   <br>
 
   {% if record_dc != None %}
@@ -44,7 +25,7 @@
 
         {% for i, content in enumerate(record_dc[key]) %}
 
-            <h3><a href="{{ record_dc[key][i].link }} " class="{{ record_dc[key][i].id }}" onmousedown="WhichButton(event)" target="_blank">{{ record_dc[key][i].title }}</a></h3>
+            <h3><a href="{{ record_dc[key][i].link }} " class="{{ record_dc[key][i].id }} " onmousedown="WhichButton(event) " target="_blank ">{{ record_dc[key][i].title }}</a></h3>
             <br>
         {%endfor %}
       {% endif %}
@@ -54,5 +35,5 @@
 {% endblock %}
 
 {% block endScripts %}
-<script src="static/js/news.js"></script>
+<script src="static/js/news.js "></script>
 {% endblock %}

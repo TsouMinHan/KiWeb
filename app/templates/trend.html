@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+    {{ super() }}
+{% endblock %}
+
+{% block inside_right %}
+    {% for ele in data %}
+        {% for key in ele %}
+            <h2>{{ key }}</h2>
+            {% for e in ele[key] %}
+                <h2>{{ e }}</h2>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    
+{% endblock %}
+
+
+
+{% block scripts %}
+    {{super()}}
+{% endblock %}
+
+{% block endScripts %}
+
+{% endblock %}
