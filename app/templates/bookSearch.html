@@ -1,67 +1,40 @@
-{% extends "base.html" %} {% block title %}KimoAssistant - BookSearch{% endblock %} {% block content %} {{ super() }} {% endblock %} {% block inside_right %}
+{% extends "base.html" %} 
 
-<div class="container">
-    <div class="row">
-        <div class="align-items-center col-md-4">
-            <div class="form-group">
-                <label for="title">書名:</label>
-                <input type="text" class="form-control" id="keyword" name="title" value="{{ data['book_name'] }}">
-            </div>
+{% block title %}
+    KimoAssistant - BookSearch
+{% endblock %}
 
-            <div class="form-group">
-                <input type="button" class="form-control" id="Submit" value="Submit" name="{{ data['submit_click'] }}">
-            </div>
+{% block inside_right %}
+    <div class="container">
+        <div class="row">
+            <div class="align-items-center col-md-4">
+                <div class="form-group">
+                    <label for="title">書名:</label>
+                    <input type="text" class="form-control" id="keyword" name="title" value="{{ data['book_name'] }}">
+                </div>
 
-            <div id=result>
-                {% if data['results'] %} {% set results = data['results'] %} {% for key in results %}
-                <h4><a class="" href="{{ results[key] }}" target="_blank">{{key}}</a></h4>
-                <br> {% endfor %} {% endif %}
+                <div class="form-group">
+                    <input type="button" class="form-control" id="Submit" value="Submit" name="{{ data['submit_click'] }}">
+                </div>
+
+                <div id=result>
+                    {% if data['results'] %} {% set results = data['results'] %} {% for key in results %}
+                    <h4><a class="" href="{{ results[key] }}" target="_blank">{{key}}</a></h4>
+                    <br> {% endfor %} {% endif %}
+                </div>
             </div>
+            <div class="col-md-2"><img class="" src="{{ url_for('static', filename='img/bookSearch/loading.gif') }}" alt="Loading" width="90px" id="loading" style="display:none;padding-top:20px"></div>
         </div>
-        <div class="col-md-2"><img class="" src="{{ url_for('static', filename='img/bookSearch/loading.gif') }}" alt="Loading" width="90px" id="loading" style="display:none;padding-top:20px"></div>
     </div>
+{% endblock %} 
 
-
-</div>
-
-{% endblock %} {% block scripts %} {{ super() }}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script>
-    function ajax_data() {
-        var postData = {
-            "keyword": $('#keyword').val()
-        }
-        console.log(postData);
-        $.ajax({
-            url: "/dataFromAjax",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(postData),
-            beforeSend: function() {
-                $('#loading').show();
-                document.getElementById('result').innerHTML = ""
-            },
-            success: function(data) {
-                for (var key in data) {
-                    document.getElementById('result').innerHTML += `<h4><a class="" href="${data[key]}" target="_blank">${key}</a></h4><br>`
-                };
-            },
-            complete: function() {
-                $('#loading').hide();
-            }
-        });
-    };
-    $(function() {
-        $('#Submit').click(function() {
-            ajax_data();
-        });
-    });
-
-    $(function() {
-        $('#Insert').click(function() {
+{% block scripts %} 
+    {{ super() }}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        function ajax_data() {
             var postData = {
-                "book_name": $('#book_name').val(),
-                "comment": $('#comment').val()
+                "keyword": $('#keyword').val()
             }
             console.log(postData);
             $.ajax({
@@ -71,9 +44,9 @@
                 data: JSON.stringify(postData),
                 beforeSend: function() {
                     $('#loading').show();
+                    document.getElementById('result').innerHTML = ""
                 },
                 success: function(data) {
-                    document.getElementById('result').innerHTML = "";
                     for (var key in data) {
                         document.getElementById('result').innerHTML += `<h4><a class="" href="${data[key]}" target="_blank">${key}</a></h4><br>`
                     };
@@ -82,31 +55,66 @@
                     $('#loading').hide();
                 }
             });
-        });
-    });
-
-    $(document).ready(function() {
-
-        // Get the input field
-        var input = document.getElementById("keyword");
-
-        // Execute a function when the user releases a key on the keyboard
-        input.addEventListener("keyup", function(event) {
-            // Number 13 is the "Enter" key on the keyboard
-            if (event.keyCode === 13) {
-                // Cancel the default action, if needed
-                event.preventDefault();
-                // Trigger the button element with a click
-                document.getElementById("Submit").click();
-            }
+        };
+        $(function() {
+            $('#Submit').click(function() {
+                ajax_data();
+            });
         });
 
-    });
-</script>
-{% endblock %} {% block endScripts %}
-<script>
-    if ($("#Submit").attr("name") == "True") {
-        ajax_data();
-    }
-</script>
+        $(function() {
+            $('#Insert').click(function() {
+                var postData = {
+                    "book_name": $('#book_name').val(),
+                    "comment": $('#comment').val()
+                }
+                console.log(postData);
+                $.ajax({
+                    url: "/dataFromAjax",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(postData),
+                    beforeSend: function() {
+                        $('#loading').show();
+                    },
+                    success: function(data) {
+                        document.getElementById('result').innerHTML = "";
+                        for (var key in data) {
+                            document.getElementById('result').innerHTML += `<h4><a class="" href="${data[key]}" target="_blank">${key}</a></h4><br>`
+                        };
+                    },
+                    complete: function() {
+                        $('#loading').hide();
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+
+            // Get the input field
+            var input = document.getElementById("keyword");
+
+            // Execute a function when the user releases a key on the keyboard
+            input.addEventListener("keyup", function(event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("Submit").click();
+                }
+            });
+
+        });
+    </script>
+{% endblock %}
+
+{% block endScripts %}
+    {{ super() }}
+    <script>
+        if ($("#Submit").attr("name") == "True") {
+            ajax_data();
+        }
+    </script>
 {% endblock %}

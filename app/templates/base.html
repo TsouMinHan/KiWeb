@@ -1,112 +1,139 @@
-{% block head %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="">
-    <meta name="author" content=""> 
-    <title>{% block title %}KimoAssistant{% endblock %}</title>
-    <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}"> 
-    {% block styles %}
-        <!-- Bootstrap core CSS -->
-        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="{{ url_for('static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
-        <link href="{{ url_for('static', filename='css/top-btn.css') }}" rel="stylesheet">
-        <link href="{{ url_for('static', filename='css/Smooth-Scrolling.css') }}" rel="stylesheet">
-        <link href="{{ url_for('static', filename='css/navbar.css') }}" rel="stylesheet">
-        
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}">
+
+  <title>
+    {% block title %}
+      KimoAssistant
     {% endblock %}
-    
-    {% block scripts %}      
-      <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-      <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </title>
+
+  {% block styles %}
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/simple-sidebar.css') }}" rel="stylesheet">
+  {% endblock %}
+
+  {% block scripts %}
       <script src="{{ url_for('static', filename='js/top-btn.js') }}"></script>
       <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
-    {% endblock %}   
+  {% endblock %}   
 
-{% endblock %}
+</head>
 
-{% block body%}
+<body>
 
-  <button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
+  <div class="d-flex" id="wrapper">
 
-{% block navbar %}
-  <nav class="navbar navbar-inverse navbar-fixed-top">        
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="{{url_for('main.index')}}">KimoAssistant</a>
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <img src="{{ url_for('static', filename='img/head_photo.JPG') }}" width="200" height="200" class="img-responsive" alt="Photo">
       </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          {% if current_user.username %}
-            <li>
-              <a class="nav-link">Hi, {{ current_user.username }}</a>
+      <div class="sidebar-heading text-center">鄒旻翰</div>
+      <div class="list-group list-group-flush">
+        {% block inside_left %}
+        {% endblock %}
+        <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+      </div>
+    </div>
+    
+    <!-- Sidebar -->
+    
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      {% block navbar %}
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">伸縮</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('main.index')}}">Home</a>
             </li>
-          {% endif %}
-          <li>
-            <a class="nav-link" href="{{url_for('main.index')}}">Home</a>
-          </li>
-          <li>
-            <a href="{{url_for('main.news_index')}}">News</a>
-          </li>
-          <li>
-            <a href="{{url_for('main.gallery_index')}}">Gallery</a>
-          </li>
-          <li>
-            <a href="{{url_for('main.bookSearch_index')}}">BookSearch</a>
-          </li>
-          <li>
-            <a href="{{url_for('main.database_index', table_name='')}}">Database</a>
-          </li>
-          <li>
-            <a href="{{url_for('main.log_index')}}">Log</a>
-          </li>
-          {% if current_user.is_anonymous %}
-          <li>
-            <a href="{{ url_for('main.login') }}">Login</a>
-          </li>        
-          {% else %}
-          <li>
-            <a href="{{ url_for('main.logout') }}">Logout</a>
-          </li>          
-          {% endif %} 
-        </ul>                  
-      </div>
-    </div>
-  </nav>
-{% endblock %}
-
-{% block content%}
-<div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3 col-md-2 sidebar">
-        <div>
-          <div class="row placeholders">
-            <div class="placeholder">
-              <img src="{{ url_for('static', filename='img/head_photo.JPG') }}" width="200" height="200" class="img-responsive" alt="Photo">
-              <h4>鄒旻翰</h4>
-              <span class="text-muted">做來玩的</span>
-            </div>   
-            {% block inside_left %}
-          {% endblock %}         
-          </div>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('main.news_index')}}">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('main.gallery_index')}}">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('main.bookSearch_index')}}">BookSearch</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('main.capsule_index')}}">Capsule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('main.database_index', table_name='')}}">Database</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('main.log_index')}}">Log</a>
+            </li>
+            {% if current_user.is_anonymous %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.login') }}">Login</a>
+            </li>        
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.logout') }}">Logout</a>
+            </li>          
+            {% endif %} 
+          </ul>
         </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">    
-    {% block inside_right %}
+      </nav>
     {% endblock %}
+
+    <div class="container-fluid">
+      <br>
+      <br>
+    {% block inside_right %}
+      <!-- <div class="container-fluid">
+      </div> -->
+      
+    {% endblock %}
+    </div>
+    
+    </div>
+    <!-- /#page-content-wrapper -->
+
   </div>
-{% endblock %}
-{% endblock %}
+  <!-- /#wrapper -->
+
+</body>
 
 {% block endScripts %}
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='js/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 {% endblock %}
+
+</html>

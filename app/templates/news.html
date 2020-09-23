@@ -1,17 +1,27 @@
-{% extends "base.html" %} {% block title %}KimoAssistant - NEWS{% endblock %} {% block content%} {{ super() }} {% endblock %} {% block body%} {{ super() }} {% endblock %} {% block scripts %} {{ super() }} {% endblock %} {% block inside_left %}
-<ul class="nav nav-sidebar">
-    {% for key in record_dc.keys() %}
-    <li><a href="#{{ key }}">{{ key }} - {{ record_dc[key]|length }}</a></li>
-    {%endfor %}
-</ul>
-{% endblock %} {% block inside_right %}
+{% extends "base.html" %} 
 
-<form method="GET" " class="div_right ">
-    <input type="date " name="date " value="{{ date }} ">
-    <input type="submit ">
-  </form>
-  <h3><a href="http://globalnewstv.com.tw/category/%e5%85%a8%e7%90%83%e6%96%b0%e8%84%88%e5%8b%95/ " target="_blank ">寰宇</a></h3>
-  <h3><a href="https://www.daai.tv/news/international " target="_blank ">大愛</a></h3>
+{% block title %}
+  KimoAssistant - NEWS
+{% endblock %} 
+
+{% block scripts %} 
+  {{ super() }} 
+{% endblock %} 
+
+{% block inside_left %}
+    {% for key in record_dc.keys() %}
+      <a href="#{{ key }}" class="list-group-item list-group-item-action bg-light">{{ key }} - {{ record_dc[key]|length }}</a>
+    {%endfor %}
+
+{% endblock %}
+
+{% block inside_right %}  
+  <h3>
+    <a href="http://globalnewstv.com.tw/category/%e5%85%a8%e7%90%83%e6%96%b0%e8%84%88%e5%8b%95/ " target="_blank ">寰宇</a>
+  </h3>
+  <h3>
+    <a href="https://www.daai.tv/news/international " target="_blank ">大愛</a>
+  </h3>
   <br>
 
   {% if record_dc != None %}
@@ -35,5 +45,6 @@
 {% endblock %}
 
 {% block endScripts %}
-<script src="static/js/news.js "></script>
+  {{ super() }}
+  <script src="static/js/news.js "></script>
 {% endblock %}

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-{{ super() }}
-<link href="{{ url_for('static', filename='css/database.css') }}" rel="stylesheet">
+  {{ super() }}
+  <link href="{{ url_for('static', filename='css/database.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% set column_info_ls = data["column_info_ls"] %}
@@ -10,134 +10,135 @@
 
 {% block inside_right %}
 
-{% if data["table_name"]  %}
-<h3>資料表：{{ data["table_name"] }} 共 {{data["data_length"]}} 筆資料</h3>
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'structure')">結構</button>
-  <button class="tablinks" onclick="openCity(event, 'data')" id="defaultOpen">資料</button>
-  <p id="max_page">{{data["data_length"] // 100 +1}}</p>
-  <p>/</p>
-  <input id="up_page" type="number" value="{{ data['page'] }}">
-</div>
-{% endif %}
-
-<div id="structure" class="tabcontent">
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>欄位名稱</th>
-      <th>資料型態</th>
-      <th>是否空值</th>
-      <th>預設值</th>
-      <th>主鍵</th>
-    </tr>
-
-    {% for column_info in column_info_ls %}
-    <tr>
-      <th>
-        {{column_info[0]}}
-      </th>
-      <th>
-        {{column_info[1]}}
-      </th>
-      <th>
-        {{column_info[2]}}
-      </th>
-      <th>
-        {{column_info[3]}}
-      </th>
-      <th>
-        {{column_info[4]}}
-      </th>
-      <th>
-        {{column_info[5]}}
-      </th>
-    </tr>
-    {% endfor %}
-  </table>
-</div>
-
-<div id="data" class="tabcontent">
-  <table class="table">
-    <form method='post' action="{{ url_for('main.database_index', table_name=data['table_name']) }}">
-      <tr>
-        <th>
-          <input type="submit">
-        </th>
-        {% for column_info in column_info_ls %}
-        <th>
-          <input name="{{column_info[1]}}" style="width: 50%;">
-        </th>
-        {% endfor %}
-      </tr>
-    </form>
-
-    <tr>
-      <th></th><!-- for index -->
-
-      {% for column_info in column_info_ls %}
-      <th>
-        {{column_info[1]}}
-      </th>
-      {% endfor %}
-    </tr>
-
-    {% for n, column_data in enumerate(column_data_ls) %}
-    <tr style="width: 50%;">
-      <td>
-        <a class="btn btn-primary"
-          href="{{url_for('main.modify_index', table_name=data['table_name'], id=column_data[0])}}">
-          {{ n }}
-        </a>
-      </td>
-
-      {% for i in range(column_data|length) %}
-        <td class="{{ column_data[0] }}">
-          <input value="{{column_data[i]}}" readonly>
-        </td>
-      {% endfor %}
-    </tr>
-    {% endfor %}
-
-  </table>
-</div>
-
-{% if data["table_name"]  %}
+  {% if data["table_name"]  %}
+  <h3>資料表：{{ data["table_name"] }} 共 {{data["data_length"]}} 筆資料</h3>
   <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'structure')">結構</button>
     <button class="tablinks" onclick="openCity(event, 'data')" id="defaultOpen">資料</button>
     <p id="max_page">{{data["data_length"] // 100 +1}}</p>
     <p>/</p>
-    <input id="down_page" type="number" value="{{ data['page'] }}">
+    <input id="up_page" type="number" value="{{ data['page'] }}">
   </div>
-{% endif %}
+  {% endif %}
 
-{% endblock %}
-
-{% block inside_left %}
-{% set table_ls = data["table_ls"] %}
-  <div class="container">
+  <div id="structure" class="tabcontent">
     <table class="table">
       <tr>
-        <th>資料表名稱</th>
+        <th>ID</th>
+        <th>欄位名稱</th>
+        <th>資料型態</th>
+        <th>是否空值</th>
+        <th>預設值</th>
+        <th>主鍵</th>
       </tr>
 
-      {% for table in table_ls %}
+      {% for column_info in column_info_ls %}
       <tr>
         <th>
-          <a href="{{ url_for('main.database_index', table_name=table) }}">{{ table }}</a>
+          {{column_info[0]}}
+        </th>
+        <th>
+          {{column_info[1]}}
+        </th>
+        <th>
+          {{column_info[2]}}
+        </th>
+        <th>
+          {{column_info[3]}}
+        </th>
+        <th>
+          {{column_info[4]}}
+        </th>
+        <th>
+          {{column_info[5]}}
         </th>
       </tr>
       {% endfor %}
     </table>
   </div>
+
+  <div id="data" class="tabcontent">
+    <table class="table">
+      <form method='post' action="{{ url_for('main.database_index', table_name=data['table_name']) }}">
+        <tr>
+          <th>
+            <input type="submit">
+          </th>
+          {% for column_info in column_info_ls %}
+          <th>
+            <input name="{{column_info[1]}}" style="width: 50%;">
+          </th>
+          {% endfor %}
+        </tr>
+      </form>
+
+      <tr>
+        <th></th><!-- for index -->
+
+        {% for column_info in column_info_ls %}
+        <th>
+          {{column_info[1]}}
+        </th>
+        {% endfor %}
+      </tr>
+
+      {% for n, column_data in enumerate(column_data_ls) %}
+      <tr style="width: 50%;">
+        <td>
+          <a class="btn btn-primary"
+            href="{{url_for('main.modify_index', table_name=data['table_name'], id=column_data[0])}}">
+            {{ n }}
+          </a>
+        </td>
+
+        {% for i in range(column_data|length) %}
+          <td class="{{ column_data[0] }}">
+            <input value="{{column_data[i]}}" readonly>
+          </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+
+    </table>
+  </div>
+
+  {% if data["table_name"]  %}
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'structure')">結構</button>
+      <button class="tablinks" onclick="openCity(event, 'data')" id="defaultOpen">資料</button>
+      <p id="max_page">{{data["data_length"] // 100 +1}}</p>
+      <p>/</p>
+      <input id="down_page" type="number" value="{{ data['page'] }}">
+    </div>
+  {% endif %}
+
+{% endblock %}
+
+{% block inside_left %}
+  {% set table_ls = data["table_ls"] %}
+    <div class="container">
+      <table class="table">
+        <tr>
+          <th>資料表名稱</th>
+        </tr>
+
+        {% for table in table_ls %}
+        <tr>
+          <th>
+            <a href="{{ url_for('main.database_index', table_name=table) }}">{{ table }}</a>
+          </th>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
 {% endblock %}
 
 {% block scripts %}
-{{super()}}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  {{super()}}
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block endScripts %}
-<script src="{{ url_for('static', filename='js/database.js') }}" type="text/javascript"></script>
+  {{ super() }}
+  <script src="{{ url_for('static', filename='js/database.js') }}" type="text/javascript"></script>
 {% endblock %}

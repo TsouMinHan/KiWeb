@@ -1,3 +1,8 @@
+2020.09.23
+"2.4.0"
+new:
+ - useing bootstrap 4 template.
+
 2020.09.16
 "2.3.8"
 improved:

@@ -172,20 +172,6 @@ class MainDB:
         self.db = DBHandler()
         self.table_name = "job"
 
-    def create_table(self):
-        with self.db:
-            sql = f"""
-                CREATE TABLE IF NOT EXISTS {self.table_name} (
-                id integer PRIMARY KEY,
-                name string(8) NOT NULL,
-                start_time string(64) NOT NULL,
-                weekday string(8) NOT NULL,
-                channel integer NOT NULL
-                );
-                """
-            
-            self.db.cur.execute(sql)
-
     def get_record(self, table_name, start):
         with self.db:
             sql = f"""
@@ -274,6 +260,37 @@ class MainDB:
             rows = self.db.cur.fetchall()
 
         return rows[0]
+
+class CapsuleDB:
+    def __init__(self):
+        self.db = DBHandler()
+        self.table_name = "capsule"
+
+    def get_record(self):
+        with self.db:
+            sql = f"""
+                SELECT title, img_link, link 
+                FROM {self.table_name}
+                WHERE seen=0
+            """
+
+            self.db.cur.execute(sql)
+
+            rows = self.db.cur.fetchall()
+            
+        return rows
+
+    def set_seen(self):
+        with self.db:
+            sql = f"""
+                UPDATE {self.table_name}
+                SET seen=1
+                WHERE seen=0;
+            """
+            
+            self.db.cur.execute(sql)
+
+            self.db.conn.commit()
 
 class LogContent:
     def __init__(self, title, msg, datetime):
