@@ -3,6 +3,11 @@
 new:
  - useing bootstrap 4 template.
 
+"2.4.1"
+improved:
+ - fixed navvar.
+ - add missing css file.
+
 2020.09.16
 "2.3.8"
 improved:

@@ -22,6 +22,10 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/simple-sidebar.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/top-btn.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/Smooth-Scrolling.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+
   {% endblock %}
 
   {% block scripts %}
@@ -32,6 +36,7 @@
 </head>
 
 <body>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
 
   <div class="d-flex" id="wrapper">
 
@@ -60,7 +65,7 @@
     <div id="page-content-wrapper">
 
       {% block navbar %}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light border-bottom fixed-top">
         <button class="btn btn-primary" id="menu-toggle">伸縮</button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,6 +131,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{{ url_for('static', filename='js/jquery/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/top-btn.js') }}"></script>
 
   <!-- Menu Toggle Script -->
   <script>
