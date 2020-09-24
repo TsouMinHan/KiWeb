@@ -19,19 +19,17 @@
     <div>
       <p id="flash"></p>
     </div>
-    <br>
-    <hr>
-    <hr>
-    <ul id="items-list" class="moveable">
+    <ul id="items-list" class="list-group">
       {% if data %}
           {% for key in data %}
-          <li>
-            <a class="" href="{{ data[key]['url'] }}" target="_blank">
-              <img src="{{ data[key]['favicon'] }}" height="16px" width="16px">{{key}}
-            </a>
-            <button type="button" class="pull-right btn-link" id="{{key}}" onclick="delete_bookmark(this.id)">X</button>
-          </li>
-          <br>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <a class="" href="{{ data[key]['url'] }}" target="_blank">
+                <img src="{{ data[key]['favicon'] }}" height="16px" width="16px">{{key}}
+              </a>
+
+              <button type="button" class="btn btn-outline-dark" id="{{key}}" onclick="delete_bookmark(this.id)">X</button>
+              
+            </li>
           {% endfor %}      
         {% endif %}
     </ul>
