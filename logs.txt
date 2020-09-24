@@ -1,3 +1,8 @@
+2020.09.24
+"2.4.1"
+improved:
+ - change Gallery.html template and add border on img.
+
 2020.09.23
 "2.4.0"
 new:

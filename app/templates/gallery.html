@@ -37,21 +37,22 @@
             </div>
             <!-- <button onclick="downFunction()" id="downBtn" title="Go to End">End</button> -->
         </div>
-
+        <hr>
 
         {% if data != None %}
-        <div class="col-md-2">
-            <img class="" src="{{ url_for('static', filename='img/bookSearch/loading.gif') }}" alt="Loading" width="90px" id="loading" style="display:none;padding-top:20px">
-        </div>
-        <div class="row" , id="canvas">
-            {% for img in data['img_ls'] %}
-            <div class="col-md-5">
-                <a href="{{ img }}"><img src="{{ img }}" width=100%></a>
-                <br>
+            <div class="col-md-2">
+                <img class="" src="{{ url_for('static', filename='img/bookSearch/loading.gif') }}" alt="Loading" width="90px" id="loading" style="display:none;padding-top:20px">
             </div>
-            {% endfor %} {% endif %}
+            <div class="row" , id="canvas">
+                {% for img in data['img_ls'] %}
+                    <div class="col-md-4">
+                        <a href="{{ img }}" target="_blank"><img class="border" src="{{ img }}" width=70%></a>
+                    </div>
+                {% endfor %}
+        {% endif %}
         </div>
 
+        <hr>
         <div class="row">
             <div class="col-md-10">
                 <div class="btn-group btn-group-lg pull-right">
