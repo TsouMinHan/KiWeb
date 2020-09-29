@@ -14,10 +14,11 @@ $(function() {
             },
             success: function(data) {
                 data['img_ls'].forEach(function(img) {
-                    document.getElementById('canvas').innerHTML += `<div class="col-md-5">
-                    <a href="${img}"><img src="${img}" width=100%></a>
-                    <br> 
-                </div></a></h4>`
+                    document.getElementById('canvas').innerHTML += `<div class="col-4">
+                    <a href="${img}" target="_blank">
+                        <img class="img-thumbnail img-fluid" src="${img}">
+                    </a>
+                </div>`
                 })
             },
             complete: function() {
@@ -83,3 +84,4 @@ $(function() {
         });
     });
 });
+

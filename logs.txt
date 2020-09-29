@@ -1,3 +1,8 @@
+2020.09.29
+"2.4.4"
+fixed:
+ - galley.html image template error due to gallery.js's AJAX.
+
 2020.09.24
 "2.4.2"
 improved:

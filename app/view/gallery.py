@@ -14,7 +14,6 @@ global img_ls
 @login_required
 def gallery_index():
     global img_ls
-
     img_ls = db.get_img_ls()
 
     return render_template('gallery.html', data={"img_ls": img_ls})
