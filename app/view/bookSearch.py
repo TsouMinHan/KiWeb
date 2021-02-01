@@ -38,13 +38,6 @@ def get_result_by_hyread(url):
         return num if num else 0
     return '404NotFound'
 
-def get_dict():
-    file = r".\app\static\doc\bookSearch.json"
-    with open(file, encoding="utf-8") as json_file:
-        data = json.load(json_file)
-    
-    return data['another'], data['hyread']
-
 @main.route('/dataFromAjax', methods=['POST'])
 def ajax_index():
     data = request.get_json()

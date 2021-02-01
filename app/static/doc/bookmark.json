@@ -1,1 +1,54 @@
-{"YouTube": {"url": "https://www.youtube.com/", "favicon": "https://www.youtube.com//favicon.ico"}, "\u5df4\u54c8\u59c6\u7279\u96fb\u73a9\u8cc7\u8a0a\u7ad9": {"url": "https://www.gamer.com.tw/", "favicon": "https://www.gamer.com.tw//favicon.ico"}, "\u5834\u5916\u4f11\u61a9\u5340 \u54c8\u5566\u677f - \u5df4\u54c8\u59c6\u7279": {"url": "https://forum.gamer.com.tw/A.php?bsn=60076", "favicon": "https://forum.gamer.com.tw/favicon.ico"}, "\r\n\t\u6703\u54e1\u767b\u9304 - \u770b\u6f2b\u756b\r\n": {"url": "https://tw.manhuagui.com/user/book/shelf", "favicon": "https://tw.manhuagui.com/favicon.ico"}, "9GAG: Go Fun The World": {"url": "https://9gag.com/", "favicon": "https://9gag.com//favicon.ico"}, "\u82f1\u96c4\u5206\u6790 - League of Legends - League of Legends": {"url": "https://na.op.gg/champion/statistics", "favicon": "https://na.op.gg/favicon.ico"}, "Save Coins": {"url": "https://savecoins.app/games/all-games", "favicon": "https://savecoins.app/static/img/icons/favicon-16x16.png?v=2"}, "\u52a8\u7269\u68ee\u6797 Wiki | Fandom": {"url": "https://animalcrossing.fandom.com/zh/wiki/%E9%A6%96%E9%A0%81", "favicon": "https://animalcrossing.fandom.com/favicon.ico"}, "\u52d5\u7269\u68ee\u53cb\u6703\u4e2d\u6587\u7dad\u57fa": {"url": "https://acnh.tw/%E9%A6%96%E9%A0%81", "favicon": ""}, "Nintendo Store\u4e3b\u9801": {"url": "https://store.nintendo.com.hk/", "favicon": ""}, "Animal Crossing Pattern Tool": {"url": "https://acpatterns.com/", "favicon": "https://acpatterns.com//favicon.ico"}, "zero\u642c\u8fd0\u7f51,\u5168\u7f51\u6700\u65b0\u6700\u5168\u7684\u5728\u7ebf\u65e5\u672c\u751f\u8089\u6f2b\u753b - zerobyw  ": {"url": "http://www.zerobywplus.com/plugin.php?id=jameson_manhua&c=index&a=ku", "favicon": "http://www.zerobywplus.com/favicon.ico"}, "\u00e4\u00bb\u00bb\u00e5\u00a4\u00a9\u00e5\u00a0\u0082\u00e3\u0083\u009b\u00e3\u0083\u00bc\u00e3\u0083\u00a0\u00e3\u0083\u009a\u00e3\u0083\u00bc\u00e3\u0082\u00b8": {"url": "https://www.nintendo.co.jp/", "favicon": "https://www.nintendo.co.jp//favicon.ico"}}
+{
+    "YouTube": {
+        "url": "https://www.youtube.com/",
+        "favicon": "https://www.youtube.com//favicon.ico"
+    },
+    "\u5df4\u54c8\u59c6\u7279\u96fb\u73a9\u8cc7\u8a0a\u7ad9": {
+        "url": "https://www.gamer.com.tw/",
+        "favicon": "https://www.gamer.com.tw//favicon.ico"
+    },
+    "\u5834\u5916\u4f11\u61a9\u5340 \u54c8\u5566\u677f - \u5df4\u54c8\u59c6\u7279": {
+        "url": "https://forum.gamer.com.tw/A.php?bsn=60076",
+        "favicon": "https://forum.gamer.com.tw/favicon.ico"
+    },
+    "\r\n\t\u6703\u54e1\u767b\u9304 - \u770b\u6f2b\u756b\r\n": {
+        "url": "https://tw.manhuagui.com/user/book/shelf",
+        "favicon": "https://tw.manhuagui.com/favicon.ico"
+    },
+    "9GAG: Go Fun The World": {
+        "url": "https://9gag.com/",
+        "favicon": "https://9gag.com//favicon.ico"
+    },
+    "\u82f1\u96c4\u5206\u6790 - League of Legends - League of Legends": {
+        "url": "https://na.op.gg/champion/statistics",
+        "favicon": "https://na.op.gg/favicon.ico"
+    },
+    "Save Coins": {
+        "url": "https://savecoins.app/games/all-games",
+        "favicon": "https://savecoins.app/static/img/icons/favicon-16x16.png?v=2"
+    },
+    "\u52a8\u7269\u68ee\u6797 Wiki | Fandom": {
+        "url": "https://animalcrossing.fandom.com/zh/wiki/%E9%A6%96%E9%A0%81",
+        "favicon": "https://animalcrossing.fandom.com/favicon.ico"
+    },
+    "\u52d5\u7269\u68ee\u53cb\u6703\u4e2d\u6587\u7dad\u57fa": {
+        "url": "https://acnh.tw/%E9%A6%96%E9%A0%81",
+        "favicon": ""
+    },
+    "Nintendo Store\u4e3b\u9801": {
+        "url": "https://store.nintendo.com.hk/",
+        "favicon": ""
+    },
+    "Animal Crossing Pattern Tool": {
+        "url": "https://acpatterns.com/",
+        "favicon": "https://acpatterns.com//favicon.ico"
+    },
+    "zero\u642c\u8fd0\u7f51,\u5168\u7f51\u6700\u65b0\u6700\u5168\u7684\u5728\u7ebf\u65e5\u672c\u751f\u8089\u6f2b\u753b - zerobyw  ": {
+        "url": "http://www.zerobywplus.com/plugin.php?id=jameson_manhua&c=index&a=ku",
+        "favicon": "http://www.zerobywplus.com/favicon.ico"
+    },
+    "\u00e4\u00bb\u00bb\u00e5\u00a4\u00a9\u00e5\u00a0\u0082\u00e3\u0083\u009b\u00e3\u0083\u00bc\u00e3\u0083\u00a0\u00e3\u0083\u009a\u00e3\u0083\u00bc\u00e3\u0082\u00b8": {
+        "url": "https://www.nintendo.co.jp/",
+        "favicon": "https://www.nintendo.co.jp//favicon.ico"
+    }
+}

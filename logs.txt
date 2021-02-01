@@ -1,3 +1,6 @@
+2021.02.01
+user can use company search now
+
 2020.09.29
 "2.4.4"
 fixed:
