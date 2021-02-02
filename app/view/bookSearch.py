@@ -12,6 +12,7 @@ url_formula_dc = {
     "google": 'https://www.google.com/search?q={}',
     "PTT 心得": 'https://www.google.com/search?q={} PTT',
     "PTT sale": 'https://www.google.com/search?q={} 售書',
+    "PTT 二手版": 'https://www.ptt.cc/bbs/barterbooks/search?q={}',
     "googl_play": 'https://play.google.com/store/search?q={}&c=books',
     "tazze": 'https://www.taaze.tw/rwd_searchResult.html?keyType%5B%5D=0&keyword%5B%5D={}',
     "tenlong": 'https://www.tenlong.com.tw/search?utf8=%E2%9C%93&keyword={}',
